@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bieu do</title>
+    <script src=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <script>
+    const labels = ["thh2", "thu ba", "thu4"];
+
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "luot truy cap",
+          backgroudColor: "blue",
+          borderColor: "blue",
+          data: [10, 20, 24, 40, 24, 2, 52],
+        },
+      ],
+    };
+    const config = {
+      type: "line",
+      data: data,
+    };
+    const canvas = document.getElementById;
+    const chart = new Chart(canvas, config);
+  </script>
+  <body>
+    <canvas id="canvs"></canvas>
+  </body>
+</html>

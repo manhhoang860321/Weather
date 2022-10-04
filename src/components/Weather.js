@@ -1,10 +1,22 @@
 import React from "react";
-import Capital from "./Capital";
+// import "./Weather.css";
+import "../App.css";
+
+// import Capital from "./Capital";
+// import C from "./C";
+import T from "./T";
+// import WeatherToDay from "./WeatherToDay";
+import WeatherWeek from "./WeatherWeek";
 
 export default function Weather() {
   return (
-    <div>
-      <Capital></Capital>
+    <div className="container">
+      {/* <Capital></Capital> */}
+      {/* <C></C> */}
+
+      <T></T>
+      <WeatherWeek></WeatherWeek>
+      {/* <WeatherToDay></WeatherToDay> */}
     </div>
   );
 }
