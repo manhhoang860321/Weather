@@ -1,10 +1,12 @@
 import "./App.css";
 import Weather from "./components/Weather";
+import WeatherTab from "./components/WeatherTab";
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Weather></Weather>
+      <WeatherTab></WeatherTab>;
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from "react";
-import "../App.css";
 export default function WeatherToDay() {
   return (
     <div className="container-tab">
