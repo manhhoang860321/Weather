@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -39,4 +39,4 @@ h6 {
   grid-gap: 25px;
   grid-template-rows: repeat(2, 1fr);
   display: flex;
-}
+} */

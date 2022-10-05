@@ -74,27 +74,50 @@ h6 {
   }
 }
 
-.container {
-  grid-gap: 25px;
+.wrapper {
+  background-color: #4a4a4a;
+  /* grid-gap: 25px; */
   grid-template-rows: repeat(2, 1fr);
   display: flex;
 }
 
+/* search  */
+.weather-search {
+  width: 35%;
+  /* padding-left: 25px; */
+}
 .search {
-  width: 25%;
+  width: 100%;
+  height: 700px;
+  padding: 20px;
+  background: #fff;
+  padding: 30px;
+}
+.search input {
+  border-radius: 1px solid;
 }
 
-.container-tab {
+/* style css */
+/* weather-tab */
+.weather-tab {
+  padding: 20px;
   width: 100%;
+  background: #f6f6f8;
 }
+.weather-tab nav ul {
+  display: flex;
+}
+
+.list-day li {
+  margin-right: 15px;
+}
+.list-day li a {
+  text-decoration: none;
+}
+
 .weather-time-list {
-  /* grid-template-columns: row; */
   display: flex;
   list-style: none;
-  /* list-style-type: disc; */
-  /* list-style: ;
-   */
-  text-decoration: black;
 }
 
 .weather-time-list li {
@@ -110,21 +133,36 @@ h6 {
   display: grid;
   grid: 5px;
 }
+/* Weather today */
 .item {
-  border-radius: 2px;
-  /* max-width: 250px; */
+  width: 300px;
+  height: 200px;
+  background: #fff;
+  /* padding: 5px; */
+  margin: 15px; /* max-width: 250px; */
   /* width: 15%; */
+}
+.item h4 {
+  padding: 10px;
+  font-size: 20px;
+  color: rgb(143, 140, 140);
+}
+.item img {
+  padding-top: 40px;
+  width: 40%;
+  margin: auto;
+}
+.item p {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  /* padding: 55px 0 0 28px; */
+  /* height: 40%; */
+  width: 40%;
+  margin: 0 auto;
 }
 .container-week {
   width: 100%;
-}
-.weather-week-time {
-  width: 100%;
-}
-.weather-week-time ul {
-  grid-template-columns: repeat(4, 1fr);
-  display: grid;
-  grid: 5px;
 }
 
 li {
@@ -138,4 +176,72 @@ li {
 }
 .weather-week-status h4 {
   left: 2px;
+}
+.active {
+  color: rgb(1, 8, 8);
+  border-bottom: 2px solid;
+}
+.active a {
+  font-weight: bold;
+
+  color: #282c34;
+}
+.list-day li a {
+  color: #282c34;
+  font-size: 32px;
+}
+
+/* Weather Week */
+.weather-week-time {
+  width: 100%;
+}
+.weather-week-time ul {
+  grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  grid: 2px;
+}
+.weather-week-list li {
+}
+
+.weather-week-list li {
+  width: 240px;
+  height: 150px;
+  background: #fff;
+  /* padding: 5px; */
+  margin: 5px; /* max-width: 250px; */
+  /* width: 15%; */
+}
+.weather-week-list h4 {
+  padding: 10px;
+  font-size: 20px;
+  color: rgb(143, 140, 140);
+}
+.weather-week-list img {
+  /* padding-top: 20px; */
+  width: 20%;
+  margin: auto;
+}
+.weather-week-list p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 420;
+  /* padding: 55px 0 0 28px; */
+  /* height: 40%; */
+  width: 20%;
+  margin: 0 auto;
+}
+.weather-week-status {
+  margin: 50px 0px 0px 5px;
+
+  background: #fff;
+}
+.weather-week-status h4 {
+  font-size: 28px;
+  color: rgb(143, 140, 140);
+  padding-bottom: 15px;
+}
+
+.list-status li {
+  color: rgb(143, 140, 140);
+  padding-bottom: 15px;
 }

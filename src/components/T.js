@@ -60,18 +60,24 @@ export default function Weather() {
   return (
     <div className="search">
       <input
-        placeholder="Nhập địa điểm"
+        placeholder="Search"
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        // onKeyDown={(e) => e.key === "Enter" && getWeather()}
+        onKeyDown={(e) => e.key === "Enter" && getWeather()}
       />
-      <button onClick={getWeather}>Tra cứu</button>
+      {/* <button onClick={getWeather}>Tra cứu</button> */}
       {weather && (
         <ul>
           <li>
-            {/* <label></label> */}
-            {weather?.location?.name}
+            <a href="https://www.weatherapi.com/" title="Free Weather API">
+              <img
+                src={`${weather?.current?.condition?.icon}`}
+                alt="Weather data by WeatherAPI.com"
+                border="0"
+              />
+            </a>
           </li>
+          <li>{weather?.location?.name}</li>
           <li>
             <span>{weather?.current?.temp_c.toFixed(0)}</span>
             <span>
@@ -85,6 +91,10 @@ export default function Weather() {
             <span>{weather?.location?.localtime.slice(11, 16)}</span>
             <span> pm</span>
           </li>
+          <li>{weather?.current?.last_updated_epoch}</li>
+
+          <li>{weather?.current?.wind_dir}</li>
+
           <li>
             <a href="https://www.weatherapi.com/" title="Free Weather API">
               <img

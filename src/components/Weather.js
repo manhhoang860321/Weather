@@ -6,17 +6,12 @@ import "../App.css";
 // import C from "./C";
 import T from "./T";
 // import WeatherToDay from "./WeatherToDay";
-import WeatherWeek from "./WeatherWeek";
+// import WeatherWeek from "./WeatherWeek";
 
 export default function Weather() {
   return (
-    <div className="container">
-      {/* <Capital></Capital> */}
-      {/* <C></C> */}
-
+    <div className="weather-search">
       <T></T>
-      <WeatherWeek></WeatherWeek>
-      {/* <WeatherToDay></WeatherToDay> */}
     </div>
   );
 }

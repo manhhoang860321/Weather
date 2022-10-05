@@ -4,7 +4,7 @@ import WeatherTab from "./components/WeatherTab";
 
 const App = () => {
   return (
-    <div>
+    <div className="wrapper">
       <Weather></Weather>
       <WeatherTab></WeatherTab>;
     </div>
