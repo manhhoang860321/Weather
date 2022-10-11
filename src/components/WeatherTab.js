@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import WeatherToday from "./WeatherToDay";
-import WeaherWeek from "./WeatherWeek";
+import WeatherWeek from "./WeatherWeek";
 import WeatherHour from "./WeatherHour";
 
-export default function WeatherTab() {
+export default function WeatherTab(dataTab) {
   const [active, setActive] = useState("");
 
   return (
@@ -17,7 +17,7 @@ export default function WeatherTab() {
             onClick={() => {
               setActive("today");
             }}
-            className={active == "today" ? "active" : ""}
+            className={active === "today" ? "active" : ""}
           >
             <Link to="/today">ToDay</Link>
           </li>
@@ -25,7 +25,7 @@ export default function WeatherTab() {
             onClick={() => {
               setActive("week");
             }}
-            className={active == "week" ? "active" : ""}
+            className={active === "week" ? "active" : ""}
           >
             <Link to="/week">Week</Link>
           </li>
@@ -33,16 +33,25 @@ export default function WeatherTab() {
             onClick={() => {
               setActive("hour");
             }}
-            className={active == "hour" ? "active" : ""}
+            className={active === "hour" ? "active" : ""}
           >
             <Link to="/hour">Hour</Link>
           </li>
         </ul>
       </nav>
       <Routes>
-        <Route path="/today" element={<WeatherToday />}></Route>
-        <Route path="/week" element={<WeaherWeek />}></Route>
-        <Route path="/hour" element={<WeatherHour />}></Route>
+        <Route
+          path="/today"
+          element={<WeatherToday dataToDay={dataTab} />}
+        ></Route>
+        <Route
+          path="/week"
+          element={<WeatherWeek dataWeek={dataTab} />}
+        ></Route>
+        <Route
+          path="/hour"
+          element={<WeatherHour dataHour={dataTab} />}
+        ></Route>
       </Routes>
     </div>
   );

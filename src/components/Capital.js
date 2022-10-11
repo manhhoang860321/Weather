@@ -31,17 +31,14 @@ export default function Capital() {
     // } catch (error) {
     //   console.error(error);
     // }
-    console.log("ppp");
+    // console.log("ppp");
 
     if (address) {
       const appid = "eb5560de6a31080f8e00d5068c23ac7b";
       const q = address;
       const units = "metric";
-
-      // let data = [];
-
       const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/current?q=${q}&units=${units}&appid=${appid}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${q}&units=${units}&appid=${appid}`
       );
       // data = await res.json();
       setData(res?.data);
@@ -54,14 +51,17 @@ export default function Capital() {
           const lat = data.coord.lat;
           const lon = data.coord.lon;
           const exclude = "daily";
+          const cnt = 7;
 
           if (data.coord.lat && data.coord.lat) {
             const resdata = await fetch(
               `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
+              // `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${cnt}&appid=${appid}`
             );
             // setDataLatLon(resdata?.dataLatLon);
             const dataLatLon = await resdata.json();
-            console.log(dataLatLon);
+            // console.log(dataLatLon);
+            setDataLatLon(dataLatLon);
           }
         }
       }
@@ -71,7 +71,7 @@ export default function Capital() {
   }
   // console.log("a");
   console.log(data);
-  // console.log(dataLatLon);
+  console.log(dataLatLon);
 
   return (
     <div>

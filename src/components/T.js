@@ -1,111 +1,82 @@
-import React, { useState } from "react";
-import "../App.css";
-
-const axios = require("axios");
-const API_KEY = "220b162ef6574c97ac432326212612";
-const BASE_URL = "http://api.weatherapi.com/v1";
-
-export default function Weather() {
-  let [weather, setWeather] = useState();
+import axios from "axios";
+import React from "react";
+import { useState } from "react";
+import WeatherWeek from "./WeatherWeek";
+export default function T() {
   const [address, setAddress] = useState("lang son");
-  const [day, setDay] = useState("");
-
-  //apiWeatherApp
-  // const [addresss, setAddresss] = useState();
-  // const [data, setData] = useState();
   const [data, setData] = useState();
+  const [dataLatLon, setDataLatLon] = useState();
+  let tam = [];
+  let dataTam = [];
+
+  let T;
   async function getWeather() {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/forecast.json?key=${API_KEY}&q=${address}`
-      );
-      console.log(response?.data);
+      // console.log("ppp");
+      if (address) {
+        const appid = "eb5560de6a31080f8e00d5068c23ac7b";
+        const q = address;
+        const units = "metric";
+        const res = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=${units}&appid=${appid}`
+        );
+        setData(res?.data);
+        // console.log(data);
+      }
 
-      setWeather(response?.data);
-      //getday
-      const weekday = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      console.log(response.data.location.localtime);
-      const d = new Date(response.data.location.localtime);
-      var dayy = weekday[d.getDay()];
-      setDay(dayy);
+      if (data && data.coord.lat && data.coord.lat) {
+        const lat = data.coord.lat;
+        const lon = data.coord.lon;
+        const cnt = 7;
+        const exclude = "hourly";
+        const appid = "eb5560de6a31080f8e00d5068c23ac7b";
+
+        // const dataEightDate = [];
+        T = dataLatLon?.daily;
+        T?.map((item) => {
+          tam = item?.dt;
+          dataTam?.push(tam);
+        });
+
+        if (data?.coord?.lat && data?.coord?.lat) {
+          const resdata = await axios.get(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
+          );
+          setDataLatLon(resdata?.data);
+        }
+      }
+      console.log(dataTam);
+      //   console.log(T);
+      return dataTam;
     } catch (error) {
-      console.error(error);
-    }
-
-    //apiWeatherAPI
-    if (address) {
-      const appid = "eb5560de6a31080f8e00d5068c23ac7b";
-      const q = address;
-      const units = "metric";
-
-      // let data = [];
-
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/current?q=${q}&units=${units}&appid=${appid}`
-      );
-      // data = await res.json();
-      setData(res?.data);
-      console.log(data);
+      console.log("lai loi roi");
     }
   }
 
+  // console.log();
+  //   console.log(dataTam);
+  //   console.log(T);
+
   return (
-    <div className="search">
+    <div>
       <input
         placeholder="Search"
-        value={address}
+        defaultValue={address}
         onChange={(e) => setAddress(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && getWeather()}
       />
-      {/* <button onClick={getWeather}>Tra cứu</button> */}
-      {weather && (
-        <ul>
-          <li>
-            <a href="https://www.weatherapi.com/" title="Free Weather API">
-              <img
-                src={`${weather?.current?.condition?.icon}`}
-                alt="Weather data by WeatherAPI.com"
-                border="0"
-              />
-            </a>
-          </li>
-          <li>{weather?.location?.name}</li>
-          <li>
-            <span>{weather?.current?.temp_c.toFixed(0)}</span>
-            <span>
-              <sup>o</sup>
-            </span>
-            <span>C</span>
-          </li>
-          <li>
-            <span>{day}</span>
-            <span>, </span>
-            <span>{weather?.location?.localtime.slice(11, 16)}</span>
-            <span> pm</span>
-          </li>
-          <li>{weather?.current?.last_updated_epoch}</li>
 
-          <li>{weather?.current?.wind_dir}</li>
-
-          <li>
-            <a href="https://www.weatherapi.com/" title="Free Weather API">
-              <img
-                src={`${weather?.current?.condition?.icon}`}
-                alt="Weather data by WeatherAPI.com"
-                border="0"
-              />
-            </a>
-          </li>
-        </ul>
-      )}
+      <ul>
+        <li>thời tiết tại {data?.name}</li>
+        <li>
+          <span>{data?.main.temp.toFixed(0)}</span>
+          <span>
+            <sup>o</sup>
+          </span>
+          <span>C</span>
+        </li>
+      </ul>
+      <WeatherWeek dataW={dataLatLon}></WeatherWeek>
     </div>
   );
 }

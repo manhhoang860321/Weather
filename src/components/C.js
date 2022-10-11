@@ -2,12 +2,12 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 export default function Capital() {
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState("lang son");
   const [data, setData] = useState();
   const [dataLatLon, setDataLatLon] = useState();
 
   async function getWeather() {
-    console.log("ppp");
+    // console.log("ppp");
     if (address) {
       const appid = "eb5560de6a31080f8e00d5068c23ac7b";
       const q = address;
@@ -16,7 +16,7 @@ export default function Capital() {
         `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=${units}&appid=${appid}`
       );
       setData(res?.data);
-      console.log("rqwrx");
+      // console.log(data);
     }
 
     if (data && data.coord.lat && data.coord.lat) {
@@ -25,18 +25,24 @@ export default function Capital() {
       const exclude = "daily";
       const appid = "eb5560de6a31080f8e00d5068c23ac7b";
 
-      if (data.coord.lat && data.coord.lat) {
+      if (data?.coord?.lat && data?.coord?.lat) {
+        // const lat1 = lat;
+        // const lon1 = lon;
         const resdata = await axios.get(
           `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
         );
-        setDataLatLon(resdata?.dataLatLon);
-        console.log("loi roi");
+        setDataLatLon(resdata);
+
+        // console.log("loi roi");
+        console.log(resdata.data.hourly[0]);
+        // console.log(lat, lon);
+        console.log(dataLatLon);
       }
     }
   }
 
-  console.log(data);
-  console.log(dataLatLon);
+  // console.log();
+  // console.log(dataLatLon);
 
   return (
     <div>

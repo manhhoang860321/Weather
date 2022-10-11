@@ -1,6 +1,7 @@
 import React from "react";
-import "../App.css";
-export default function WeatherWeek() {
+export default function WeatherWeek({ dataWeek, dataW }) {
+  // console.log(dataW);
+
   return (
     <div className="container-week">
       <div className="weather-week-time">

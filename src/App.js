@@ -1,12 +1,15 @@
 import "./App.css";
+import "font-awesome/css/font-awesome.min.css";
 import Weather from "./components/Weather";
-import WeatherTab from "./components/WeatherTab";
+import C from "./components/C";
 
+import T from "./components/T";
 const App = () => {
   return (
     <div className="wrapper">
-      <Weather></Weather>
-      <WeatherTab></WeatherTab>;
+      {/* <C></C> */}
+      <T></T>
+      {/* <Weather></Weather> */}
     </div>
   );
 };
