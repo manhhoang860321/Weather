@@ -25,7 +25,7 @@ function WeatherHour(dataHour) {
   //   feelslike_f.push(item.feelslike_f);
   // });
 
-  console.log(feelslike_c);
+  // console.log(feelslike_c);
 
   const [userData, setUserData] = useState({
     labels: dataTime,

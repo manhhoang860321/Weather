@@ -8,8 +8,8 @@ const App = () => {
   return (
     <div className="wrapper">
       {/* <C></C> */}
-      <T></T>
-      {/* <Weather></Weather> */}
+      {/* <T></T> */}
+      <Weather></Weather>
     </div>
   );
 };
