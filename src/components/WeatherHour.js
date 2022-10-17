@@ -1,7 +1,8 @@
 import { useState } from "react";
 import BarChart from "./Bar";
 
-function WeatherHour(dataHour) {
+function WeatherHour({ dataHour }) {
+  // console.log(dataHour);
   let dataTime = [];
 
   let time = [];
@@ -9,7 +10,7 @@ function WeatherHour(dataHour) {
   let temp_c = [];
   let feelslike_c = [];
   let feelslike_f = [];
-  const label = dataHour?.dataHour?.dataTab?.forecast?.forecastday[0]?.hour;
+  const label = dataHour?.forecast?.forecastday[0]?.hour;
   label.map((item) => {
     time = item.time.slice(11, 16);
     dataTime.push(time);

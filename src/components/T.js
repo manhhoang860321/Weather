@@ -4,19 +4,15 @@ import { useState } from "react";
 import WeatherWeek from "./WeatherWeek";
 export default function T() {
   const [address, setAddress] = useState("ha noi");
-  const [data, setData] = useState();
-  //   const [lat, setLat] = useState(21.8333);
-  //   const [lon, setLon] = useState(106.7333);
+  const [data, setData] = useState([]);
   const [dataLatLon, setDataLatLon] = useState();
-  const [dataT, setDataT] = useState([""]);
-
+  const [dataT, setDataT] = useState([]);
+  //   const [dataTamTime, setDataTamTime] = useState([]);
   let tam = [];
   let dataTamDate = [];
   let dataTamTime = [];
-
-  let T;
+  let T = [];
   async function getWeather() {
-    // console.log("ppp");
     if (address) {
       const appid = "eb5560de6a31080f8e00d5068c23ac7b";
       const q = address;
@@ -25,45 +21,36 @@ export default function T() {
         `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=${units}&appid=${appid}`
       );
       setData(res?.data);
-    }
-    console.log(data);
-
-    if (data && data?.coord?.lat && data?.coord?.lat) {
-      // if ((lat, lon)) {
-      const lat = data?.coord?.lat;
-      const lon = data?.coord?.lon;
-      const cnt = 7;
-      const exclude = "hourly";
-      const appid = "eb5560de6a31080f8e00d5068c23ac7b";
-
-      T = dataLatLon?.daily;
-      setDataT(dataTamTime);
-      //   console.log(dataTamTime);
-
-      T?.map((item) => {
-        tam = new Date(item?.dt * 1000).toLocaleDateString();
-        dataTamDate?.push(tam);
-      });
-      T?.map((item) => {
-        tam = new Date(item?.dt * 1000).toDateString();
-        dataTamTime?.push(tam);
-      });
-      if (data?.coord?.lat && data?.coord?.lat) {
-        const resdata = await axios.get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
-        );
-        setDataLatLon(resdata?.data?.daily);
-        console.log(dataLatLon);
-        //   }
-        // console.log(T);
-        // setDataLatLon(T);
-        //   console.log(T);
+      console.log(res);
+      if (res?.data?.coord?.lat && res?.data?.coord?.lon) {
+        //oke
+        const lat = res?.data?.coord?.lat;
+        const lon = res?.data?.coord?.lon;
+        const cnt = 7;
+        const exclude = "hourly";
+        const appid = "eb5560de6a31080f8e00d5068c23ac7b";
+        if (lat && lon) {
+          // hay đây?
+          const resdata = await axios.get(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
+          );
+          setDataLatLon(resdata?.data?.daily);
+        }
       }
     }
-    //   console.log(dataTamDate);
-    // console.log(dataT);
-    //   console.log(dataT[0]);
   }
+  T = dataLatLon;
+  console.log(T);
+  T?.map((item) => {
+    tam = new Date(item?.dt * 1000).toLocaleDateString();
+    dataTamDate?.push(tam);
+  });
+  T?.map((item) => {
+    tam = new Date(item?.dt * 1000).toDateString();
+    dataTamTime?.push(tam);
+  });
+  console.log(dataTamDate);
+  console.log(dataTamTime);
   return (
     <div>
       <input

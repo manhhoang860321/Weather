@@ -11,13 +11,13 @@ import pressureimg from "../access/pressure.png";
 
 export default function WeatherToDay({ dataToDay }) {
   // console.log(sunsetimg);
-  const uv = dataToDay?.dataTab?.current.uv;
-  const windStatus = dataToDay?.dataTab?.current.wind_kph;
-  const sunRise = dataToDay?.dataTab?.forecast?.forecastday[0]?.astro?.sunrise;
-  const sunSet = dataToDay?.dataTab?.forecast?.forecastday[0]?.astro?.sunset;
-  const humidity = dataToDay?.dataTab?.current.humidity;
-  const vis_km = dataToDay?.dataTab?.current.vis_km;
-  const pressure_mb = dataToDay?.dataTab?.current.pressure_mb;
+  const uv = dataToDay?.current.uv;
+  const windStatus = dataToDay?.current.wind_kph;
+  const sunRise = dataToDay?.forecast?.forecastday[0]?.astro?.sunrise;
+  const sunSet = dataToDay?.forecast?.forecastday[0]?.astro?.sunset;
+  const humidity = dataToDay?.current.humidity;
+  const vis_km = dataToDay?.current.vis_km;
+  const pressure_mb = dataToDay?.current.pressure_mb;
   // console.log(uv);
   // console.log(dataToDay);
   return (

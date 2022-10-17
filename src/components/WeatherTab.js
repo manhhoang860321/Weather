@@ -6,7 +6,12 @@ import WeatherToday from "./WeatherToDay";
 import WeatherWeek from "./WeatherWeek";
 import WeatherHour from "./WeatherHour";
 
-export default function WeatherTab(dataTab) {
+export default function WeatherTab({
+  dataTab,
+  dataTime,
+  dataDate,
+  dataLatLon,
+}) {
   const [active, setActive] = useState("");
 
   return (
@@ -46,7 +51,14 @@ export default function WeatherTab(dataTab) {
         ></Route>
         <Route
           path="/week"
-          element={<WeatherWeek dataWeek={dataTab} />}
+          element={
+            <WeatherWeek
+              dataWeek={dataTab}
+              dataTime={dataTime}
+              dataDate={dataDate}
+              dataWeekAll={dataLatLon}
+            />
+          }
         ></Route>
         <Route
           path="/hour"

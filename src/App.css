@@ -176,6 +176,9 @@ h6 {
 .container-week {
   width: 100%;
 }
+.weather-week-list li p {
+  width: 100%;
+}
 
 li {
   /* text-decoration: none; */
