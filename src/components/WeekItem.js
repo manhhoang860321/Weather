@@ -15,7 +15,7 @@ export default function WeekItem({ dataWeekAll }) {
   const current =  "Temp current : "+((d?.temp?.min - 273.15 + d?.temp?.max - 273.15)/2).toFixed(0) + "°C"
   const temp = "Tem : " + (d?.temp?.min - 273.15).toFixed(2) +" °C "+ "- " +(d?.temp?.max - 273.15).toFixed(2)+ " °C"
   const humidity =  "Humidity : " +d?.humidity + " %"
-  const wind = " Wind speed : " +d?.wind_speed + " km/"
+  const wind = " Wind speed : " +d?.wind_speed + " km/h"
   // setDescription([1, 2])
 
 
