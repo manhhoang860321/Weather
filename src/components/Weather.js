@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../App.css";
 import WeatherSearch from "./WeatherSearch";
 import WeatherTab from "./WeatherTab";
 // import WeatherToDay from "./WeatherToDay";
 
-const axios = require("axios");
+// const axios = require("axios");
 const API_KEY = "220b162ef6574c97ac432326212612";
 const BASE_URL = "http://api.weatherapi.com/v1";
 

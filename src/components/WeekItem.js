@@ -1,17 +1,43 @@
 import React, { useState } from "react";
 
 export default function WeekItem({ dataWeekAll }) {
+  // console.log(dataWeekAll.dataWeek?.forecast?.forecastday[0].astro.sunrise);
+
   const [d, setD] = useState([]);
-  //   console.log(dataWeekAll.dataWeekAll);
-  console.log(d);
-  console.log(d?.temp?.min);
+  // const [description, setDescription] = useState([])
+  // const [sunRise, setSunRise] = useState('')
+
+  const sunRise = new Date(d?.sunrise * 1000).toLocaleString().slice(0, 5) + " am"
+  const sunSet = new Date(d?.sunrise * 1000).toLocaleString().slice(0, 5) + " pm"
+  // const description = "Description : "+ d?.weather[0]?.description
+  const pressure = "Atmostpheric : " + d?.pressure + " hPa"
+
+  const current =  "Temp current : "+((d?.temp?.min - 273.15 + d?.temp?.max - 273.15)/2).toFixed(0) + "°C"
+  const temp = "Tem : " + (d?.temp?.min - 273.15).toFixed(2) +" °C "+ "- " +(d?.temp?.max - 273.15).toFixed(2)+ " °C"
+  const humidity =  "Humidity : " +d?.humidity + " %"
+  const wind = " Wind speed : " +d?.wind_speed + " km/h"
+  // setDescription([1, 2])
+
+
+  // const t = d?.weather
+
+  // if(d){
+  //   console.log(t[0]);
+  // }
+  // console.log(d?.weather[0]?.description)
+  
+  // console.log(description);
+
+    // console.log(description);
+  // console.log(d.sunrise);
+  // console.log(sunRise);
+ 
+  // console.log(d?.temp?.min);
   return (
     <div>
+    <div className="list-week">
       {dataWeekAll.dataWeekAll.map((item, index) => {
-        {
-          /* console.log("1", index); */
-        }
-
+        
         return (
           <div key={index}>
             <li
@@ -36,6 +62,7 @@ export default function WeekItem({ dataWeekAll }) {
                 <span>
                   {(item.temp.min - 273.15).toFixed(0)} <sup>o</sup>
                 </span>
+                
                 <span> - </span>
                 <span>{(item.temp.max - 273.15).toFixed(0)}</span>
               </p>
@@ -43,71 +70,26 @@ export default function WeekItem({ dataWeekAll }) {
           </div>
         );
       })}
-      {
-        <div className="weather-week-status">
-          <h4>
-            <span>{new Date(d.dt * 1000).toDateString().slice(0, 3)}</span>
-            <span>, </span>
-            <span>
-              {new Date(d.dt * 1000).toLocaleDateString().slice(0, 5)}
-            </span>
-          </h4>
-          <ul className="list-status">
-            <li>
-              <span>
-                Temp current:
-                {((d?.temp?.min - 273.15 + d?.temp?.max - 273.15) / 2).toFixed(
-                  0
-                )}
-              </span>
-              <span>
-                <sup>o</sup>
-              </span>
-              <span>C</span>
-            </li>
-            <li>
-              <span>Temp :{(d?.temp?.min - 273.15).toFixed(2)}</span>
-              <span>
-                <sup>o</sup>
-              </span>
-              <span>C</span>
-
-              <span> - </span>
-              <span>Temp :{(d?.temp?.max - 273.15).toFixed(2)}</span>
-              <span>
-                <sup>o</sup>
-              </span>
-              <span>C</span>
-            </li>
-            <li>
-              {d?.humidity} <span>%</span>
-            </li>
-            <li>
-              Wind speed: {d.wind_speed} <span>km/h</span>
-            </li>
-            <li>Temp current: 21 C</li>
-            <li>Temp current: 21 C</li>
-            <li>Temp current: 21 C</li>
-            <li>Temp current: 21 C</li>
-          </ul>
-        </div>
-      }
     </div>
+    <div className="weather-week-status">
+    <h4>
+      <span>{new Date(d.dt * 1000).toDateString().slice(0, 3)}</span>
+      <span>, </span>
+      <span>
+        {new Date(d.dt * 1000).toLocaleDateString().slice(0, 5)}
+      </span>
+    </h4>
+    <ul className="list-status">
+      <li>{current}</li>
+      <li>{sunRise}</li>
+      <li>{temp}</li>
+      <li>{sunSet}</li>
+      <li>{humidity}</li>
+      <li>{}</li>
+      <li>{wind}</li>
+      <li>{pressure}</li>
+    </ul>
+  </div>
+  </div>
   );
-}
-
-{
-  /* <div className="weather-week-status">
-      <h4>Mon, 22/2</h4>
-      <ul className="list-status">
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-        <li>Temp current: 21 C</li>
-      </ul>
-    </div> */
 }

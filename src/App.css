@@ -110,7 +110,7 @@ h6 {
 /* weather-tab */
 .weather-tab {
   padding: 20px;
-  width: 90%;
+  width: 75%;
   background: #f6f6f8;
 }
 .weather-tab nav ul {
@@ -184,11 +184,11 @@ li {
   /* text-decoration: none; */
   list-style: none;
 }
-.list-status {
+/* .list-status {
   grid-template-columns: repeat(2, 1fr);
   display: grid;
   grid: 5px;
-}
+} */
 .weather-week-status h4 {
   left: 2px;
 }
@@ -211,7 +211,7 @@ li {
   width: 100%;
 }
 .weather-week-time ul {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   display: grid;
   grid: 2px;
 }
@@ -220,7 +220,7 @@ li {
 
 .weather-week-list li {
   width: 240px;
-  height: 150px;
+  /* height: 150px; */
   background: #fff;
   /* padding: 5px; */
   margin: 5px; /* max-width: 250px; */
@@ -245,6 +245,11 @@ li {
   width: 20%;
   margin: 0 auto;
 }
+.list-week{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .weather-week-status {
   margin: 50px 0px 0px 5px;
 
@@ -258,7 +263,8 @@ li {
 
 .list-status li {
   color: rgb(143, 140, 140);
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
+  margin-right: 200px;
 }
 .sunrise {
   height: 35%;

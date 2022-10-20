@@ -17,7 +17,7 @@ export default function WeatherWeek({
     <div className="container-week">
       <div className="weather-week-time">
         <ul className="weather-week-list">
-          <WeekList dataWeekAll={{ dataWeekAll }}></WeekList>
+          <WeekList dataWeekAll={{ dataWeekAll, dataWeek }}></WeekList>
         </ul>
       </div>
 
