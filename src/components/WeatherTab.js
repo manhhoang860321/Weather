@@ -46,6 +46,10 @@ export default function WeatherTab({
       </nav>
       <Routes>
         <Route
+          path="/"
+          element={<WeatherToday dataToDay={dataTab} />}
+        ></Route>
+        <Route
           path="/today"
           element={<WeatherToday dataToDay={dataTab} />}
         ></Route>

@@ -87,25 +87,64 @@ export default function Data() {
   });
   // console.log(dataTamDate);
   // console.log(dataTamTime);
-  // console.log(weather);
-
-  return (
-    <div className="weather">
-      <div className="search-input">
-        <input
-          placeholder="Search"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && getWeather()}
+  let desc= '';
+  if(isNaN(weather)){
+    return (
+      <div className="weather">
+        <div className="search-input">
+          <input
+            placeholder="Search"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && getWeather()}
+          />
+        </div>
+        <WeatherSearch dataSearch={weather} dataDay={day} />
+        { weather &&
+          <WeatherTab
+          dataTab={weather}
+          dataDate={dataTamDate}
+          dataTime={dataTamTime}
+          dataLatLon={dataLatLon}
         />
+        }
       </div>
-      <WeatherSearch dataSearch={weather} dataDay={day} />
-      <WeatherTab
-        dataTab={weather}
-        dataDate={dataTamDate}
-        dataTime={dataTamTime}
-        dataLatLon={dataLatLon}
-      />
-    </div>
-  );
+    );
+  }else {
+    return (
+      <div className="weather">
+        <div className="search-input">
+          <input
+            placeholder="Search"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && getWeather()}
+          />
+        </div>
+        <WeatherSearch dataSearch={weather} dataDay={day} />
+      </div>
+    );
+  }
+
+  // return (
+  //   <div className="weather">
+  //     <div className="search-input">
+  //       <input
+  //         placeholder="Search"
+  //         value={address}
+  //         onChange={(e) => setAddress(e.target.value)}
+  //         onKeyDown={(e) => e.key === "Enter" && getWeather()}
+  //       />
+  //     </div>
+  //     <WeatherSearch dataSearch={weather} dataDay={day} />
+  //     { weather &&
+  //       <WeatherTab
+  //       dataTab={weather}
+  //       dataDate={dataTamDate}
+  //       dataTime={dataTamTime}
+  //       dataLatLon={dataLatLon}
+  //     />
+  //     }
+  //   </div>
+  // );
 }

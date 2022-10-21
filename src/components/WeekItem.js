@@ -4,7 +4,7 @@ export default function WeekItem({ dataWeekAll }) {
   // console.log(dataWeekAll.dataWeek?.forecast?.forecastday[0].astro.sunrise);
 
   const [d, setD] = useState([]);
-  // const [description, setDescription] = useState([])
+  const [description, setDescription] = useState()
   // const [sunRise, setSunRise] = useState('')
 
   const sunRise = new Date(d?.sunrise * 1000).toLocaleString().slice(0, 5) + " am"
@@ -16,14 +16,20 @@ export default function WeekItem({ dataWeekAll }) {
   const temp = "Tem : " + (d?.temp?.min - 273.15).toFixed(2) +" °C "+ "- " +(d?.temp?.max - 273.15).toFixed(2)+ " °C"
   const humidity =  "Humidity : " +d?.humidity + " %"
   const wind = " Wind speed : " +d?.wind_speed + " km/h"
-  // setDescription([1, 2])
+  // setDescription(d.weather)
 
 
   // const t = d?.weather
-
-  // if(d){
-  //   console.log(t[0]);
-  // }
+  let desc= '';
+  if(isNaN(d)){
+    desc =(d.weather[0].description); 
+    console.log(d.weather[0].description);
+    console.log('dsads');
+  }else {
+    console.log('Not data!!');
+  }
+  console.log(desc);
+  // console.log(desc);
   // console.log(d?.weather[0]?.description)
   
   // console.log(description);
@@ -85,7 +91,7 @@ export default function WeekItem({ dataWeekAll }) {
       <li>{temp}</li>
       <li>{sunSet}</li>
       <li>{humidity}</li>
-      <li>{}</li>
+      <li>{desc}</li>
       <li>{wind}</li>
       <li>{pressure}</li>
     </ul>

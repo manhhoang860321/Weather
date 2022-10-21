@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
+import {img} from "../access/img-uv.png"
+
 const axios = require("axios");
 const API_KEY = "220b162ef6574c97ac432326212612";
 const BASE_URL = "http://api.weatherapi.com/v1";
@@ -45,40 +47,42 @@ export default function Search({ dataSearch, dataDay }) {
           <ul>
             <li>
               <img
-                src={`${dataSearch?.current?.condition?.icon}`}
+                src={ isNaN(dataSearch) ? `${dataSearch?.current?.condition?.icon}` : 'https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png'}
                 alt=""
                 border="0"
               />
             </li>
-            <li>{dataSearch?.location?.name}</li>
+            <li>Name city: {isNaN(dataSearch) ? dataSearch?.location?.name : ' ..............'}</li>
             <li>
-              <span>{dataSearch?.current?.temp_c.toFixed(0)}</span>
+              <span>temp_c: { isNaN(dataSearch) ? dataSearch?.current?.temp_c.toFixed(0) : ".."}</span>
               <span>
                 <sup>o</sup>
               </span>
               <span>C</span>
             </li>
-            <li>
-              <span>{dataDay}</span>
+            <li> Day:
+              <span> {dataDay}</span>
               <span>, </span>
-              <span>{dataSearch?.location?.localtime.slice(11, 16)}</span>
+              <span> { dataSearch?.location?.localtime.slice(11, 16)}</span>
               <span> pm</span>
             </li>
-            <li>
-              {dataSearch?.forecast?.forecastday[0]?.day?.condition?.text}
+            <li>Status day: 
+            <span> </span>
+                { isNaN(dataSearch) ? dataSearch?.forecast?.forecastday[0]?.day?.condition?.text : ' ..............'}
             </li>
-
-            <li>
-              {dataSearch?.forecast?.forecastday[0]?.hour[0]?.condition?.text}
+            <li>Status Hour :
+            <span> </span>
+             { isNaN(dataSearch) ?  dataSearch?.forecast?.forecastday[0]?.hour[0]?.condition?.text : ' ..............'}
             </li>
-            <li>{dataSearch?.location?.name}</li>
-            <li>
+            {/* <li>  { isNaN(dataSearch) ? dataSearch?.location?.name : '..............'}
+            </li> */}
+            {/* <li>
               <img
                 src={`${dataSearch?.current?.condition?.icon}`}
                 alt=""
                 border="0"
               />
-            </li>
+            </li> */}
           </ul>
         </div>
       )}
