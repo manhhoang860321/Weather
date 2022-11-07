@@ -71,8 +71,8 @@ export default function Data() {
       }
 
       // console.log(response);
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      // console.error();
     }
   }
   T = dataLatLon;
@@ -87,8 +87,8 @@ export default function Data() {
   });
   // console.log(dataTamDate);
   // console.log(dataTamTime);
-  let desc= '';
-  if(isNaN(weather)){
+  let desc = "";
+  if (isNaN(weather)) {
     return (
       <div className="weather">
         <div className="search-input">
@@ -100,17 +100,17 @@ export default function Data() {
           />
         </div>
         <WeatherSearch dataSearch={weather} dataDay={day} />
-        { weather &&
+        {weather && (
           <WeatherTab
-          dataTab={weather}
-          dataDate={dataTamDate}
-          dataTime={dataTamTime}
-          dataLatLon={dataLatLon}
-        />
-        }
+            dataTab={weather}
+            dataDate={dataTamDate}
+            dataTime={dataTamTime}
+            dataLatLon={dataLatLon}
+          />
+        )}
       </div>
     );
-  }else {
+  } else {
     return (
       <div className="weather">
         <div className="search-input">
