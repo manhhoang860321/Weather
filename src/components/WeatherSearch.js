@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
-import {img} from "../access/img-uv.png"
+import { img } from "../access/img-uv.png";
 
 const axios = require("axios");
 const API_KEY = "220b162ef6574c97ac432326212612";
@@ -47,32 +47,53 @@ export default function Search({ dataSearch, dataDay }) {
           <ul>
             <li>
               <img
-                src={ isNaN(dataSearch) ? `${dataSearch?.current?.condition?.icon}` : 'https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png'}
+                src={
+                  isNaN(dataSearch)
+                    ? `${dataSearch?.current?.condition?.icon}`
+                    : "https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                }
                 alt=""
                 border="0"
               />
             </li>
-            <li>Name city: {isNaN(dataSearch) ? dataSearch?.location?.name : ' ..............'}</li>
             <li>
-              <span>temp_c: { isNaN(dataSearch) ? dataSearch?.current?.temp_c.toFixed(0) : ".."}</span>
+              Name city:{" "}
+              {isNaN(dataSearch)
+                ? dataSearch?.location?.name
+                : " .............."}
+            </li>
+            <li>
+              <span>
+                Temp C:{" "}
+                {isNaN(dataSearch)
+                  ? dataSearch?.current?.temp_c.toFixed(0)
+                  : ".."}
+              </span>
               <span>
                 <sup>o</sup>
               </span>
               <span>C</span>
             </li>
-            <li> Day:
+            <li>
+              {" "}
+              Day:
               <span> {dataDay}</span>
               <span>, </span>
-              <span> { dataSearch?.location?.localtime.slice(11, 16)}</span>
+              <span> {dataSearch?.location?.localtime.slice(11, 16)}</span>
               <span> pm</span>
             </li>
-            <li>Status day: 
-            <span> </span>
-                { isNaN(dataSearch) ? dataSearch?.forecast?.forecastday[0]?.day?.condition?.text : ' ..............'}
+            <li>
+              Status day:
+              <span> </span>
+              {isNaN(dataSearch)
+                ? dataSearch?.forecast?.forecastday[0]?.day?.condition?.text
+                : " .............."}
             </li>
-            <li>Status Hour :
-            <span> </span>
-             { isNaN(dataSearch) ?  dataSearch?.forecast?.forecastday[0]?.hour[0]?.condition?.text : ' ..............'}
+            <li>
+              Status Hour :<span> </span>
+              {isNaN(dataSearch)
+                ? dataSearch?.forecast?.forecastday[0]?.hour[0]?.condition?.text
+                : " .............."}
             </li>
             {/* <li>  { isNaN(dataSearch) ? dataSearch?.location?.name : '..............'}
             </li> */}
