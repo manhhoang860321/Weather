@@ -4,7 +4,7 @@ import { img } from "../access/img-uv.png";
 
 const axios = require("axios");
 const API_KEY = "220b162ef6574c97ac432326212612";
-const BASE_URL = "http://api.weatherapi.com/v1";
+const BASE_URL = "https://api.weatherapi.com/v1";
 
 export default function Search({ dataSearch, dataDay }) {
   let [weather, setWeather] = useState([]);
@@ -50,7 +50,7 @@ export default function Search({ dataSearch, dataDay }) {
                 src={
                   isNaN(dataSearch)
                     ? `${dataSearch?.current?.condition?.icon}`
-                    : "https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                    : "httpss://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
                 }
                 alt=""
                 border="0"

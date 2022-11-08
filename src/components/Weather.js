@@ -8,7 +8,7 @@ import Tab from "./Tab";
 
 // const axios = require("axios");
 const API_KEY = "220b162ef6574c97ac432326212612";
-const BASE_URL = "http://api.weatherapi.com/v1";
+const BASE_URL = "https://api.weatherapi.com/v1";
 
 export default function Data() {
   let [weather, setWeather] = useState([]);
@@ -51,7 +51,7 @@ export default function Data() {
         const q = address;
         const units = "metric";
         const res = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${q}&units=${units}&appid=${appid}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${q}&units=${units}&appid=${appid}`
         );
         setData(res?.data);
         // console.log(res);
@@ -64,7 +64,7 @@ export default function Data() {
           const appid = "eb5560de6a31080f8e00d5068c23ac7b";
           if (lat && lon) {
             const resdata = await axios.get(
-              `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
+              `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${exclude}&appid=${appid}`
             );
             setDataLatLon(resdata?.data?.daily);
           }
