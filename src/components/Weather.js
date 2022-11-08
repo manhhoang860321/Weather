@@ -3,6 +3,7 @@ import axios from "axios";
 import "../App.css";
 import WeatherSearch from "./WeatherSearch";
 import WeatherTab from "./WeatherTab";
+import Tab from "./Tab";
 // import WeatherToDay from "./WeatherToDay";
 
 // const axios = require("axios");
@@ -100,14 +101,14 @@ export default function Data() {
           />
         </div>
         <WeatherSearch dataSearch={weather} dataDay={day} />
-        {weather && (
-          <WeatherTab
-            dataTab={weather}
-            dataDate={dataTamDate}
-            dataTime={dataTamTime}
-            dataLatLon={dataLatLon}
-          />
-        )}
+        {/* {weather && ( */}
+        <WeatherTab
+          dataTab={weather}
+          dataDate={dataTamDate}
+          dataTime={dataTamTime}
+          dataLatLon={dataLatLon}
+        />
+        {/* )} */}
       </div>
     );
   } else {
@@ -122,6 +123,12 @@ export default function Data() {
           />
         </div>
         <WeatherSearch dataSearch={weather} dataDay={day} />
+        <Tab
+          dataTab={weather}
+          dataDate={dataTamDate}
+          dataTime={dataTamTime}
+          dataLatLon={dataLatLon}
+        ></Tab>
       </div>
     );
   }

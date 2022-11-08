@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import FooterWeek from "./FooterWeek";
 import WeekList from "./WeekList";
 export default function WeatherWeek({
   dataWeek,

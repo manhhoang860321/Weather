@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BarChart from "./Bar";
 
 function WeatherHour({ dataHour }) {
-  // console.log(dataHour);
   let dataTime = [];
+  // console.log(dataHour);
+  // const [dataTime, setDataTime] = useState([]);
+  // setDataTime(dataHour);
+  const [userData, setUserData] = useState({});
 
   let time = [];
 
@@ -22,43 +25,17 @@ function WeatherHour({ dataHour }) {
   label.map((item) => {
     feelslike_c.push(item.feelslike_c);
   });
+  // w=[]
   // label.map((item) => {
   //   feelslike_f.push(item.feelslike_f);
   // });
 
   // console.log(feelslike_c);
-
-  const [userData, setUserData] = useState({
-    labels: dataTime,
-    datasets: [
-      {
-        label: "Temp (C)",
-        data: temp_c,
-        backgroundColor: [
-          "rgb(143, 140, 140, 0.7)",
-          // "#ecf0f1",
-          // "#50AF95",
-          // "#f3ba2f",
-          // "#2a71d0",
-        ],
-        borderColor: "#9970AC",
-        borderWidth: 3,
-      },
-      {
-        label: "Feel Like (C)",
-        data: feelslike_c,
-        backgroundColor: [
-          "rgb(143, 140, 140, 0.7)",
-          // "#ecf0f1",
-          // "#50AF95",
-          // "#f3ba2f",
-          // "#2a71d0",
-        ],
-        borderColor: "#9DD7CA",
-        borderWidth: 3,
-      },
-    ],
-  });
+  useEffect(() => {
+    setUserData([dataTime, temp_c, feelslike_c]);
+  }, [dataHour]);
+  // console.log(userData);
+  // setUserData(dataTime);
   return (
     <div className="App">
       {/* <p>qqqq</p> */}
